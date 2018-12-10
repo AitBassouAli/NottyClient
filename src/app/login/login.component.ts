@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { UserModule } from './user-modal/user.modal';
 import { Router } from '@angular/router';
+import { createSecureServer } from 'http2';
 
 @Component({
   selector: 'app-login',
@@ -26,12 +27,20 @@ export class LoginComponent implements OnInit {
       }, error => console.log(error));
   }
   login() {
-    this.users.forEach(element => {
+    this.userService.getAll().subscribe(element => {
       if (element.username == this.user.username && element.password == this.user.password) {
         this.router.navigate(["notes"]);
+        console.log("login bien Bien Effectuer")
       } else {
 
       }
-    });
+    },error => console.log(error)));
   }
+  RegisterUser(){
+   this.userService.createUser(this.user).subscribe(data=>{
+    console.log(data)
+   },error => console.log(error))
+  }
+
+
 }

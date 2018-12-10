@@ -13,4 +13,7 @@ export class UserService {
   getAll(): Observable<any> {
     return this.http.get(`${this.uriUser}`);
   }
+  createUser(user){
+    return this.http.post(`${this.uriUser}`,user);
+  }
 }
