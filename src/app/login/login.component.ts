@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { UserModule } from './user-modal/user.modal';
 import { Router } from '@angular/router';
-import { createSecureServer } from 'http2';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +10,9 @@ import { createSecureServer } from 'http2';
 })
 export class LoginComponent implements OnInit {
   users: Array<UserModule>;
-  user = new UserModule(0, 'ahmed', 'khachani');
+  user = new UserModule(0, 'Hisham', 'Hisham');
 
-  constructor(private userService: UserService , private router : Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.getAllUsers();
@@ -34,13 +33,22 @@ export class LoginComponent implements OnInit {
       } else {
 
       }
-    },error => console.log(error)));
+    }, error => console.log(error));
   }
-  RegisterUser(){
-   this.userService.createUser(this.user).subscribe(data=>{
-    console.log(data)
-   },error => console.log(error))
-  }
+  RegisterUser() {
+    this.user.username="jamal"
+    this.user.password="jamal"
+    this.userService.getAll().subscribe(element => {
+      if (this.user.username != element.username) {
+        this.userService.createUser(this.user).subscribe(data => {
+          console.log(data)
+        }, error => console.log(error))
+      }else{
+      console.log('user Deja exist');
+      }
 
+    })
+  }
 
 }
+
