@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   users: Array<UserModule>;
   user = new UserModule(0, 'Hisham', 'Hisham');
+  userExist: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -36,19 +37,24 @@ export class LoginComponent implements OnInit {
     }, error => console.log(error));
   }
   RegisterUser() {
-    this.user.username="jamal"
-    this.user.password="jamal"
-    this.userService.getAll().subscribe(element => {
-      if (this.user.username != element.username) {
-        this.userService.createUser(this.user).subscribe(data => {
-          console.log(data)
-        }, error => console.log(error))
-      }else{
-      console.log('user Deja exist');
+    this.user.username = "jamal"
+    this.user.password = "jamal"
+    this.users.forEach(element => {
+      if (this.user.username == element.username) {
+        this.userExist = true;
       }
-
     })
+    if (!this.userExist) {
+      this.userService.createUser(this.user).subscribe(data => {
+        console.log(data)
+      })
+    } else {
+      console.log("user deja exist");
+    }
   }
-
 }
+
+
+
+
 
