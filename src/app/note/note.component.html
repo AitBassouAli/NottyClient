@@ -1,0 +1,68 @@
+<div>
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <!-- /. PAGE INNER  -->
+</div>
+<div id="page-wrapper">
+    <div class="header">
+        <h1 class="page-header">
+            Mes notes
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Acceuil</a></li>
+            <li><a href="#">Mes notes</a></li>
+
+        </ol>
+
+    </div>
+    <div id="page-inner">
+        <div class="row">
+            <div *ngFor="let note of notes" class="col-md-4 col-sm-4">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        {{ note.title }}
+                        <button (click)="updateNote(note)"><i class="fa fa-pencil"></i></button>
+                        <button (click)="deleteNote(note.id)"><i class="fa fa-trash"></i></button>
+                    </div>
+                    <div class="panel-body">
+                        {{ note.body }}
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est
+                            vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et,
+                            fringilla augue.</p>
+                    </div>
+                    <div class="panel-footer">
+                        <!-- <label for="exampleInputFile">Voulez-vous importer un fichier?</label>
+                <input type="file" name="photo" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
+              </div>
+              <button type="button" class="btn btn-default" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                Importer
+              </button> -->
+                        <button class="btn btn-5 btn-5a icon-cog" data-toggle="modal" data-target="#myModal" (click)="setNote(note)"><i
+                                class="fa fa-upload"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Joindre un fichier</h4>
+            </div>
+            <div class="modal-body">
+                <label for="exampleInputFile">Voulez-vous importer un fichier?</label>
+                <input type="file" name="photo" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" (click)="uploader.uploadAll()">
+                    Importer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

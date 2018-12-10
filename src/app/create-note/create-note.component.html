@@ -1,0 +1,58 @@
+<div>
+  <app-nav-bar></app-nav-bar>
+  <app-side-bar></app-side-bar>
+  <!-- /. PAGE INNER  -->
+</div>
+<div id="page-wrapper">
+  <div class="header">
+    <h1 class="page-header">
+      Mes notes
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#">Acceuil</a></li>
+      <li><a href="#">Nouvelle note</a></li>
+
+    </ol>
+
+  </div>
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="card-title">
+              <div class="title">Sauvegarder vos notes</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div>
+              <div>
+                <div class="sub-title">Titre : </div>
+                <div>
+                  <input name="title" [(ngModel)]="note.title" type="text" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="sub-title">Note : </div>
+                <div>
+                  <textarea name="body" [(ngModel)]="note.body" class="form-control" rows="3"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <!-- <label for="exampleInputFile">Voulez-vous importer un fichier?</label>
+                <input type="file" name="photo" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
+              </div>
+              <button type="button" class="btn btn-default" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                Importer
+              </button> -->
+                <button class="btn btn-default form-control" (click)="onSubmit()"> valider</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /. PAGE INNER  -->
+  </div>
+  <!-- /. PAGE WRAPPER  -->
