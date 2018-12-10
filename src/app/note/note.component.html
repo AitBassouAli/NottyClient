@@ -8,12 +8,21 @@
         <h1 class="page-header">
             Mes notes
         </h1>
+       
         <ol class="breadcrumb">
             <li><a href="#">Acceuil</a></li>
             <li><a href="#">Mes notes</a></li>
-
+            <li style="width: 88%"><div class="input-group" style="display: inline-flex;width: 94%;">
+                    <input #searchedTitle type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                      <button class="btn btn-default" (click)="searchByTilte(searchedTitle.value)">
+                        <i class="glyphicon glyphicon-search"></i>
+                      </button>
+                    </div>
+                  </div></li>
         </ol>
-
+        
+       
     </div>
     <div id="page-inner">
         <div class="row">

@@ -273,3 +273,7 @@ input {
   left: auto;
   right: 5px;
 }
+.image:hover{
+  width:'200px';
+  height: '200px';
+  }
