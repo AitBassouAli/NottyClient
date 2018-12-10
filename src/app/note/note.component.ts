@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class NoteComponent implements OnInit {
   notes: Array<NoteModule>;
+  allNotes: Array<NoteModule>;
   note = new NoteModule(0, '', '');
   id : any;
   uri: string = 'http://localhost:8080/';
@@ -32,6 +33,7 @@ export class NoteComponent implements OnInit {
     this.noteService.getAll()
       .subscribe(data => {
         this.notes = data,
+        this.allNotes = data,
           console.log(data)
       }, error => console.log(error));
   }
@@ -61,6 +63,10 @@ export class NoteComponent implements OnInit {
       .subscribe(data => {
         this.getAllNotes();
       }, error => console.log(error));
+  }
+
+  searchByTilte(title){
+    this.notes = this.allNotes.filter(item => item.title.includes(title));
   }
 
 }

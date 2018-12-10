@@ -23,6 +23,7 @@ export class ShowNoteComponent implements OnInit {
       }, error => console.log(error));
       this.noteService.getFiles(params.id).subscribe(data =>{
         this.files = data;
+        console.log(data)
       },error =>{
 
       })
