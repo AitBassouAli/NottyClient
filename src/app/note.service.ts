@@ -50,6 +50,18 @@ export class NoteService {
     this.note = note;
   }
 
+  restore(note){
+    return this.http.put(`${this.uriNotes}restore`, note);
+  }
+
+  archive(note){
+    return this.http.put(`${this.uriNotes}archive`, note);
+  }
+
+  getArcheavedNotes(): Observable<any> {
+    return this.http.get(`${this.uriNotes}archeaved`);
+  }
+
   getNote() {
     return this.note;
   }

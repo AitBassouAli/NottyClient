@@ -4,9 +4,6 @@ import { NoteModule } from './note.module';
 import { FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -25,8 +22,10 @@ export class NoteComponent implements OnInit {
 
   ngOnInit() {
     this.getAllNotes();
-    this.id=20;
-    
+  }
+
+  navigateTo(path){
+    this.router.navigate([path]);
   }
 
   getAllNotes() {
@@ -36,11 +35,6 @@ export class NoteComponent implements OnInit {
         this.allNotes = data,
           console.log(data)
       }, error => console.log(error));
-  }
-
-  getOne() {
-    this.noteService.getOne(20)
-      .subscribe(data => console.log(data), error => console.log(error));
   }
 
   updateNote(note) {
@@ -58,8 +52,8 @@ export class NoteComponent implements OnInit {
     };
   }
 
-  deleteNote(id) {
-    this.noteService.remove(id)
+  archive(note){
+    this.noteService.archive(note)
       .subscribe(data => {
         this.getAllNotes();
       }, error => console.log(error));
@@ -67,6 +61,20 @@ export class NoteComponent implements OnInit {
 
   searchByTilte(title){
     this.notes = this.allNotes.filter(item => item.title.includes(title));
+  }
+
+  copyLink(note){
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = 'http://localhost:4200/notes/'+note.id;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 
 }

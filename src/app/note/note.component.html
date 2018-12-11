@@ -13,7 +13,7 @@
             <li><a href="#">Acceuil</a></li>
             <li><a href="#">Mes notes</a></li>
             <li style="width: 88%"><div class="input-group" style="display: inline-flex;width: 94%;">
-                    <input #searchedTitle type="text" class="form-control" placeholder="Search">
+                    <input #searchedTitle type="text" class="form-control" placeholder="Search" (keyup)="searchByTilte(searchedTitle.value)">
                     <div class="input-group-btn">
                       <button class="btn btn-default" (click)="searchByTilte(searchedTitle.value)">
                         <i class="glyphicon glyphicon-search"></i>
@@ -29,24 +29,29 @@
             <div *ngFor="let note of notes" class="col-md-4 col-sm-4">
                 <div class="panel panel-danger">
                     <div class="panel-heading">
-                        {{ note.title }}
-                        <button (click)="updateNote(note)"><i class="fa fa-pencil"></i></button>
-                        <button (click)="deleteNote(note.id)"><i class="fa fa-trash"></i></button>
+                        <a (click)= "navigateTo('notes/'+note.id)" >{{ note.title }}</a>
+                    <div style="display: inline-block;float: right;">
+                        <button data-toggle="tooltip" title="copier lien" (click)="copyLink(note)"><i class="fa fa-link"></i></button>
+                        <button data-toggle="tooltip" title="modefier" (click)="updateNote(note)"><i class="fa fa-pencil"></i></button>
+                        <button data-toggle="tooltip" title="archiver" (click)="archive(note)"><i class="fa fa-trash"></i></button>
+                    </div>
+                       
                     </div>
                     <div class="panel-body">
-                        {{ note.body }}
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est
+                        
+                        <p>{{ note.body }} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est
                             vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et,
                             fringilla augue.</p>
                     </div>
                     <div class="panel-footer">
+                        {{ note.creationDate  | date:'medium'}}
                         <!-- <label for="exampleInputFile">Voulez-vous importer un fichier?</label>
                 <input type="file" name="photo" ng2FileSelect [uploader]="uploader" id="exampleInputFile" />
               </div>
               <button type="button" class="btn btn-default" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
                 Importer
               </button> -->
-                        <button class="btn btn-5 btn-5a icon-cog" data-toggle="modal" data-target="#myModal" (click)="setNote(note)"><i
+                        <button class=" icon-cog" style="display: inline-block;float: right;" data-toggle="modal" data-target="#myModal" (click)="setNote(note)"><i
                                 class="fa fa-upload"></i></button>
                     </div>
                 </div>

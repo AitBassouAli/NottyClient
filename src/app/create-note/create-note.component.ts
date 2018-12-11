@@ -36,15 +36,15 @@ export class CreateNoteComponent implements OnInit {
   createNewNote() {
     this.noteService.create(this.note)
       .subscribe(data => {
-        this.uploader
+        this.note= new NoteModule (0,'','');
         this.router.navigate(["/notes"]);
-        console.log(data)
       }, error => console.log(error));
   }
 
   updateNote() {
     this.noteService.edit(this.note)
       .subscribe(data => {console.log(data)
+        this.note= new NoteModule (0,'','');
       this.router.navigate(["/notes"]);
       }, error => console.log(error));
   }

@@ -5,6 +5,7 @@ import { NoteComponent } from './note/note.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { ShowNoteComponent } from './show-note/show-note.component';
+import { TrashComponent } from './trash/trash.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,9 @@ const routes: Routes = [
   },
   {
     path: 'upload', component: UploadFileComponent
+  },
+  {
+    path: 'trash', component: TrashComponent
   },
 
 ];

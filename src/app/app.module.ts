@@ -17,6 +17,7 @@ import { CreateNoteComponent } from './create-note/create-note.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { FormsModule } from '@angular/forms';
 import { ShowNoteComponent } from './show-note/show-note.component';
+import { TrashComponent } from './trash/trash.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ShowNoteComponent } from './show-note/show-note.component';
     NavBarComponent,
     CreateNoteComponent,
     RegisterUserComponent,
-    ShowNoteComponent
+    ShowNoteComponent,
+    TrashComponent
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,33 @@
 <div>
-  <nav class="navbar-default navbar-side" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
 
-            <li>
-                <a class="active-menu" href="notes.html"><i class="fa fa-edit"></i> Mes notes</a>
-            </li>
-            <li>
-                <a href="nvnote.html"><i class="fa fa-fw fa-file"></i> Nouvelle note </a>
-            </li>
+                <li>
+                    <a class="active-menu" (click)="navigateTo('notes')"><i class="fa fa-edit"></i> Mes notes</a>
+                </li>
+                <li>
+                    <a (click)="navigateTo('notes/create')"><i class="fa fa-fw fa-file"></i> Nouvelle note </a>
+                </li>
+                <li>
+                    <a (click)="navigateTo('trash')" > <i class="fa fa-fw fa-file"></i> Corbeille </a>
+                </li>
 
-            <li>
-                <a href="#"><i class="fa fa-qrcode"></i> Imprimer<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="#"> .....</a>
-                    </li>
-                    <li>
-                        <a href="#">....</a>
-                    </li>
-                </ul>
-            </li>
+                <li>
+                    <a href="#"><i class="fa fa-qrcode"></i> Imprimer<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#"> .....</a>
+                        </li>
+                        <li>
+                            <a href="#">....</a>
+                        </li>
+                    </ul>
+                </li>
 
-        </ul>
+            </ul>
 
-    </div>
+        </div>
 
-</nav>
+    </nav>
 </div>
