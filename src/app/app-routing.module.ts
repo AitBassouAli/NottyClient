@@ -34,6 +34,7 @@ const routes: Routes = [
   {
     path: 'upload', component: UploadFileComponent
   },
+  { path: '', redirectTo: 'auth/login',pathMatch:"full" }
 
 ];
 
