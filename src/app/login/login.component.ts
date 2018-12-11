@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   users: Array<UserModule>;
-  user = new UserModule(0, 'Hisham', 'Hisham');
-  userExist: boolean = false;
+  user = new UserModule(0, "", "");
+  mode:number
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -27,31 +27,19 @@ export class LoginComponent implements OnInit {
       }, error => console.log(error));
   }
   login() {
-    this.userService.getAll().subscribe(element => {
-      if (element.username == this.user.username && element.password == this.user.password) {
+    this.users.forEach(element => {
+      if (element.username  == this.user.username  && element.password == this.user.password) {
         this.router.navigate(["notes"]);
         console.log("login bien Bien Effectuer")
       } else {
-
+        this.mode=1;
       }
     }, error => console.log(error));
   }
-  RegisterUser() {
-    this.user.username = "jamal"
-    this.user.password = "jamal"
-    this.users.forEach(element => {
-      if (this.user.username == element.username) {
-        this.userExist = true;
-      }
-    })
-    if (!this.userExist) {
-      this.userService.createUser(this.user).subscribe(data => {
-        console.log(data)
-      })
-    } else {
-      console.log("user deja exist");
-    }
+  registerPage(){
+    this.router.navigate(["auth/register"]);
   }
+  
 }
 
 
