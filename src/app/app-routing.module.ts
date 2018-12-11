@@ -6,12 +6,16 @@ import { UploadFileComponent } from './upload-file/upload-file.component';
 import { CreateNoteComponent } from './create-note/create-note.component';
 import { ShowNoteComponent } from './show-note/show-note.component';
 import { TrashComponent } from './trash/trash.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 const routes: Routes = [
   {
     path: 'auth', children: [
       {
         path: 'login', component: LoginComponent
+      },
+      {
+        path: 'register', component: RegisterUserComponent
       }
     ]
   },
@@ -22,7 +26,7 @@ const routes: Routes = [
       },
       {
         path: 'create', component: CreateNoteComponent
-      }, 
+      },
       {
         path: ':id', component: ShowNoteComponent
       }
@@ -34,6 +38,7 @@ const routes: Routes = [
   {
     path: 'trash', component: TrashComponent
   },
+  { path: '', redirectTo: 'auth/login', pathMatch: "full" }
 
 ];
 
