@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   users: Array<UserModule>;
   user = new UserModule(0, "", "");
-  mode:number
+  mode: number
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -28,18 +28,21 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.users.forEach(element => {
-      if (element.username  == this.user.username  && element.password == this.user.password) {
+      if (element.username == this.user.username && element.password == this.user.password) {
+        this.userService.setUserConnected(this.user)
         this.router.navigate(["notes"]);
         console.log("login bien Bien Effectuer")
       } else {
-        this.mode=1;
+        this.mode = 1;
       }
     }, error => console.log(error));
+
   }
-  registerPage(){
+
+  registerPage() {
     this.router.navigate(["auth/register"]);
   }
-  
+
 }
 
 
