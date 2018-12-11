@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.users.forEach(element => {
       if (element.username == this.user.username && element.password == this.user.password) {
-        this.userService.setUserConnected(this.user)
+        this.userService.setUserConnected(element)
         this.router.navigate(["notes"]);
         console.log("login bien Bien Effectuer")
       } else {
